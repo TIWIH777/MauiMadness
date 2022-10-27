@@ -9,9 +9,17 @@
 @code {
     private int currentCount = 0;
 
+
+    ///
+    /// Summary:
+    ///     Parameter to set how much the counter increments
+    [Parameter]
+    public int IncrementAmount { get; set; } = 1;
+
     private void IncrementCount()
     {
-        currentCount++;
+        //currentCount++;
+        currentCount += IncrementAmount;
         SemanticScreenReader.Announce(currentCount.ToString());
     }
 }

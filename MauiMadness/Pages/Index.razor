@@ -4,4 +4,49 @@
 
 Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you woooo?" />
+<SurveyPrompt Title="How is Blazor working for you? Notice I've supplied the title." />
+
+<input @bind="internetStatus" />
+
+<button class="btn btn-primary" @onclick=IsInternet>Do I have internet?</button>
+
+<button class="btn btn-primary" @onclick=FlashlightOn>Flashlight on</button>
+
+<button class="btn btn-primary" @onclick=FlashlightOff>Flashlight off</button>
+
+
+
+
+<Counter IncrementAmount="10"/>
+
+@code{
+
+    private string? internetStatus { get; set; } = "Click button to see if internet is available.";
+
+    private void IsInternet()
+    {
+        // Connection to internet is available
+        if (Connectivity.Current.NetworkAccess is NetworkAccess.Internet)
+            internetStatus = "You've got internet lol";
+        else
+            internetStatus = "No internet available.";
+
+    }
+
+    private void FlashlightOn()
+    {
+        Flashlight.Default.TurnOnAsync();
+        
+        //await Flashlight.Default.TurnOffAsync();
+
+    }
+
+    private void FlashlightOff()
+    {
+        Flashlight.Default.TurnOffAsync();
+        
+        //await Flashlight.Default.TurnOffAsync();
+
+    }
+
+}
