@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components.WebView.Maui;
-using MauiMadness.Data;
+using MauiMadness.Services;
+using MauiMadness.Services.ConditionalCompilation;
 
 namespace MauiMadness;
 
@@ -21,6 +22,9 @@ public static class MauiProgram
 #endif
 
 		builder.Services.AddSingleton<WeatherForecastService>();
+
+		builder.Services.AddSingleton<DeviceOrientationService>();
+
 
 		return builder.Build();
 	}

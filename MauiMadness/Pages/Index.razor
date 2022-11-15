@@ -1,4 +1,7 @@
 ﻿@page "/"
+@using MauiMadness.Services.ConditionalCompilation;
+@using MauiMadness.Services;
+@inject DeviceOrientationService orService
 
 <h1>Hello, world!</h1>
 
@@ -10,10 +13,16 @@ Welcome to your new app.
 
 <button class="btn btn-primary" @onclick=IsInternet>Do I have internet?</button>
 
-<button class="btn btn-primary" @onclick=FlashlightOn>Flashlight on</button>
+<input @bind="orientationStatus" />
+
+<button class="btn btn-primary" @onclick=GetOrientationStatus>How is my device oriented?</button>
+
+
+
+@*<button class="btn btn-primary" @onclick=FlashlightOn>Flashlight on</button>
 
 <button class="btn btn-primary" @onclick=FlashlightOff>Flashlight off</button>
-
+*@
 
 
 
@@ -23,6 +32,8 @@ Welcome to your new app.
 
     private string? internetStatus { get; set; } = "Click button to see if internet is available.";
 
+    private string? orientationStatus { get; set; } = "Click button to see how your device is oriented.";
+
     private void IsInternet()
     {
         // Connection to internet is available
@@ -30,8 +41,30 @@ Welcome to your new app.
             internetStatus = "You've got internet lol";
         else
             internetStatus = "No internet available.";
-
     }
+
+    private void GetOrientationStatus()
+    {
+        orientationStatus = orService.GetOrientation().ToString();
+
+        //var orientation = orService.GetOrientation();
+        //switch (orientation)
+        //{
+        //    case DeviceOrientation.Portrait:
+        //        orientationStatus = "Portrait";
+        //        break;
+        //    case DeviceOrientation.Landscape:
+        //        orientationStatus = "Landscape";
+        //        break;
+        //    case DeviceOrientation.Undefined:
+        //        orientationStatus = "Undefined (throw)";
+        //        break;
+        //    default:
+        //        orientationStatus = "What did you do???";
+        //        break;
+        //}
+    }
+
 
     private void FlashlightOn()
     {
