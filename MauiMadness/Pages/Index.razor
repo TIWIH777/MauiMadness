@@ -18,6 +18,8 @@ Welcome to your new app.
 <button class="btn btn-primary" @onclick=GetOrientationStatus>How is my device oriented?</button>
 
 
+<button class="btn btn-primary" @onclick=ThrowException>Want to see me throw an error?</button>
+
 
 @*<button class="btn btn-primary" @onclick=FlashlightOn>Flashlight on</button>
 
@@ -33,6 +35,8 @@ Welcome to your new app.
     private string? internetStatus { get; set; } = "Click button to see if internet is available.";
 
     private string? orientationStatus { get; set; } = "Click button to see how your device is oriented.";
+
+
 
     private void IsInternet()
     {
@@ -65,6 +69,27 @@ Welcome to your new app.
         //}
     }
 
+    private void ThrowException()
+    {
+        throw new Exception("Custom Message but it doesn't show up.");
+
+        //var orientation = orService.GetOrientation();
+        //switch (orientation)
+        //{
+        //    case DeviceOrientation.Portrait:
+        //        orientationStatus = "Portrait";
+        //        break;
+        //    case DeviceOrientation.Landscape:
+        //        orientationStatus = "Landscape";
+        //        break;
+        //    case DeviceOrientation.Undefined:
+        //        orientationStatus = "Undefined (throw)";
+        //        break;
+        //    default:
+        //        orientationStatus = "What did you do???";
+        //        break;
+        //}
+    }
 
     private void FlashlightOn()
     {

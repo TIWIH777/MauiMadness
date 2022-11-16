@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Components.WebView.Maui;
-using MauiMadness.Services;
+﻿using MauiMadness.Services;
 using MauiMadness.Services.ConditionalCompilation;
 
 namespace MauiMadness;
@@ -16,7 +15,7 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 			});
 
-		builder.Services.AddMauiBlazorWebView();
+		builder.Services.AddMauiBlazorWebView();	//add support for blazor hybrid
 #if DEBUG
 		builder.Services.AddBlazorWebViewDeveloperTools();
 #endif
